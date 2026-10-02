@@ -14,6 +14,10 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: #fff;
@@ -41,7 +45,7 @@ header {
     background: white;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
 }
 
 .logo {
@@ -56,13 +60,18 @@ header {
 
 nav {
     display: flex;
-    gap: 28px;
+    gap: 25px;
 }
 
 nav a {
     text-decoration: none;
     color: #222;
     font-size: 15px;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #c49a6c;
 }
 
 .icons {
@@ -71,13 +80,22 @@ nav a {
     font-size: 21px;
 }
 
+.icon-button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 21px;
+}
+
 /* HERO */
 
 .hero {
     min-height: 500px;
-    background: linear-gradient(
-        rgba(0,0,0,.25),
-        rgba(0,0,0,.25)
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.30),
+        rgba(0,0,0,.30)
     ),
     url("https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=1800&q=80");
 
@@ -87,6 +105,7 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-align: center;
     color: white;
 }
@@ -112,11 +131,17 @@ nav a {
     background: #c49a6c;
     color: white;
     text-decoration: none;
-    border-radius: 3px;
+    border-radius: 5px;
     font-weight: bold;
+    transition: .25s;
 }
 
-/* CATEGORIES */
+.button:hover {
+    background: #a77d50;
+    transform: translateY(-2px);
+}
+
+/* SECTIONS */
 
 .section {
     padding: 65px 6%;
@@ -136,6 +161,8 @@ nav a {
     color: #777;
 }
 
+/* CATEGORIES */
+
 .categories {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -146,7 +173,14 @@ nav a {
     height: 220px;
     position: relative;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.category a {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .category img {
@@ -169,7 +203,60 @@ nav a {
     color: white;
     font-size: 20px;
     font-weight: bold;
-    background: linear-gradient(transparent, rgba(0,0,0,.7));
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.75)
+    );
+}
+
+/* EVERYONE */
+
+.for-everyone {
+    background: #faf7f3;
+}
+
+.everyone-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.everyone-card {
+    height: 280px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.everyone-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.everyone-card:hover img {
+    transform: scale(1.08);
+}
+
+.everyone-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 22px;
+
+    background: linear-gradient(
+        transparent 35%,
+        rgba(0,0,0,.75)
+    );
+}
+
+.everyone-overlay h3 {
+    color: white;
+    font-size: 22px;
 }
 
 /* PRODUCTS */
@@ -181,7 +268,15 @@ nav a {
 }
 
 .product {
-    position: relative;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+    transition: .25s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
 }
 
 .product-image {
@@ -198,12 +293,12 @@ nav a {
     transition: .4s;
 }
 
-.product:hover img {
+.product:hover .product-image img {
     transform: scale(1.05);
 }
 
 .product-info {
-    padding-top: 14px;
+    padding: 15px;
 }
 
 .product-info h3 {
@@ -215,13 +310,22 @@ nav a {
     font-weight: bold;
     color: #c49a6c;
     font-size: 18px;
+    margin-bottom: 12px;
 }
 
-.old-price {
-    color: #999;
-    text-decoration: line-through;
-    margin-right: 8px;
-    font-weight: normal;
+.add-button {
+    width: 100%;
+    border: none;
+    padding: 11px;
+    background: #222;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-button:hover {
+    background: #c49a6c;
 }
 
 /* ABOUT */
@@ -244,6 +348,64 @@ nav a {
 .about p {
     line-height: 1.8;
     color: #666;
+}
+
+/* WHY */
+
+.why {
+    background: #faf7f3;
+    text-align: center;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.why-item {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.why-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.why-item h3 {
+    margin-bottom: 10px;
+}
+
+.why-item p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #777;
+}
+
+/* CONTACT */
+
+.contact {
+    text-align: center;
+}
+
+.contact-box {
+    max-width: 700px;
+    margin: auto;
+}
+
+.contact-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 25px;
+    background: #c49a6c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
 /* FOOTER */
@@ -269,12 +431,106 @@ footer p {
     line-height: 1.7;
 }
 
+footer a {
+    color: #bbb;
+    text-decoration: none;
+}
+
 .copyright {
     border-top: 1px solid #444;
     margin-top: 35px;
     padding-top: 20px;
     color: #999;
     text-align: center;
+}
+
+/* CART */
+
+.cart-panel {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 360px;
+    max-width: 90%;
+    height: 100%;
+    background: white;
+    z-index: 1000;
+    box-shadow: -5px 0 20px rgba(0,0,0,.2);
+    padding: 25px;
+    transition: .3s;
+    overflow-y: auto;
+}
+
+.cart-panel.open {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.close-cart {
+    border: none;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.cart-item {
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+
+.cart-item img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h4 {
+    margin-bottom: 5px;
+}
+
+.remove-button {
+    border: none;
+    background: none;
+    color: #c00;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.cart-total {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: #c49a6c;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.empty-cart {
+    color: #777;
+    text-align: center;
+    padding: 30px 0;
 }
 
 /* MOBILE */
@@ -305,9 +561,18 @@ footer p {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .everyone-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .products {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
     }
 
     .section {
@@ -317,93 +582,15 @@ footer p {
     .footer-grid {
         grid-template-columns: 1fr;
     }
-}
-    /* WHY GROWGIFT */
-.section.why {
-    padding: 60px 6%;
-    background: #faf7f3;
-    text-align: center;
-}
 
-.section.why .section-title h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
-    color: #222;
-}
-
-.section.why .section-title p {
-    color: #777;
-    font-size: 17px;
-    margin-bottom: 35px;
-}
-
-.why-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.why-item {
-    background: #fff;
-    padding: 30px 20px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-    transition: transform 0.2s ease;
-}
-
-.why-item:hover {
-    transform: translateY(-5px);
-}
-
-.why-icon {
-    font-size: 38px;
-    margin-bottom: 15px;
-}
-
-.why-item h3 {
-    font-size: 19px;
-    margin-bottom: 10px;
-    color: #222;
-}
-
-.why-item p {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #777;
-    margin: 0;
-}
-
-@media (max-width: 700px) {
-    .section.why {
-        padding: 45px 20px;
+    .everyone-card {
+        height: 210px;
     }
 
-    .section.why .section-title h2 {
-        font-size: 28px;
+    .category {
+        height: 190px;
     }
 
-    .why-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-    }
-
-    .why-item {
-        padding: 22px 12px;
-    }
-
-    .why-icon {
-        font-size: 32px;
-    }
-
-    .why-item h3 {
-        font-size: 16px;
-    }
-
-    .why-item p {
-        font-size: 13px;
-    }
 }
 
 </style>
@@ -411,388 +598,767 @@ footer p {
 
 <body>
 
+<!-- TOP BAR -->
+
 <div class="topbar">
-    🚚 Безплатна доставка при поръчки над 50 €.
+🚚 Безплатна доставка при поръчки над 50 €.
 </div>
+
+
+<!-- HEADER -->
 
 <header>
 
-    <div class="logo">
-        Grow<span>Gift</span>
-    </div>
+<div class="logo">
+Grow<span>Gift</span>
+</div>
 
-    <nav>
-        <a href="#">Начало</a>
-        <a href="#">Категории</a>
-        <a href="#">Подаръци</a>
-        <a href="#">За нас</a>
-        <a href="#">Контакти</a>
-    </nav>
+<nav>
 
-    <div class="icons">
-        🔍
-        🛒
-    </div>
+<a href="#home">Начало</a>
+<a href="#categories">Категории</a>
+<a href="#products">Подаръци</a>
+<a href="#about">За нас</a>
+<a href="#contact">Контакти</a>
+
+</nav>
+
+<div class="icons">
+
+<button class="icon-button" onclick="alert('Търсенето ще бъде добавено скоро 🔍')">
+🔍
+</button>
+
+<button class="icon-button" onclick="openCart()">
+🛒 <span id="cartCount">0</span>
+</button>
+
+</div>
 
 </header>
 
 
-<section class="hero">
+<!-- HERO -->
 
-    <div class="hero-content">
+<section class="hero" id="home">
 
-        <h1>Подаръци с лично послание</h1>
+<div class="hero-content">
 
-        <p>
-            Персонализирани подаръци, създадени специално за теб.
-        </p>
+<h1>
+Подаръци с лично послание
+</h1>
 
-        <a href="#" class="button">
-            РАЗГЛЕДАЙ ПРОДУКТИТЕ
-        </a>
+<p>
+Персонализирани подаръци, създадени специално за теб.
+</p>
 
-    </div>
+<a href="#products" class="button">
+РАЗГЛЕДАЙ ПРОДУКТИТЕ
+</a>
+
+</div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="section" id="categories">
+
+<div class="section-title">
+
+<h2>
+Пазарувай по повод
+</h2>
+
+<p>
+Избери подарък за всеки специален момент
+</p>
+
+</div>
+
+
+<div class="categories">
+
+
+<div class="category">
+
+<a href="#products">
+
+<img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=700&q=80">
+
+<div class="category-name">
+💍 Сватба
+</div>
+
+</a>
+
+</div>
+
+
+<div class="category">
+
+<a href="#products">
+
+<img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=700&q=80">
+
+<div class="category-name">
+🎁 Подаръци
+</div>
+
+</a>
+
+</div>
+
+
+<div class="category">
+
+<a href="#products">
+
+<img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=700&q=80">
+
+<div class="category-name">
+🎄 Коледа
+</div>
+
+</a>
+
+</div>
+
+
+<div class="category">
+
+<a href="#products">
+
+<img src="https://images.unsplash.com/photo-1545608444-f045a3e9b6c5?auto=format&fit=crop&w=700&q=80">
+
+<div class="category-name">
+✨ За всеки по нещо
+</div>
+
+</a>
+
+</div>
+
+
+</div>
 
 </section>
 
 
-<section class="section">
-
-    <div class="section-title">
-
-        <h2>Пазарувай по повод</h2>
-
-        <p>
-            Избери подарък за всеки специален момент
-        </p>
-
-    </div>
-
-
-    <div class="categories">
-
-        <div class="category">
-
-            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=700&q=80">
-
-            <div class="category-name">
-                сватба
-            </div>
-
-        </div>
-
-
-        <div class="category">
-
-            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=700&q=80">
-
-            <div class="category-name">
-                Подаръци
-            </div>
-
-        </div>
-
-
-        <div class="category">
-
-            <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=700&q=80">
-
-            <div class="category-name">
-                коледа
-            </div>
-
-        </div>
-
-
-        <div class="category">
-
-            <img src="https://images.unsplash.com/photo-1545608444-f045a3e9b6c5?auto=format&fit=crop&w=700&q=80">
-
-            <div class="category-name">
-                за всеки по нещо
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
+<!-- FOR EVERYONE -->
 
 <section class="section for-everyone">
 
-    <div class="section-title">
+<div class="section-title">
 
-        <h2>За всеки по нещо</h2>
+<h2>
+За всеки по нещо
+</h2>
 
-        <p>
-            Намери специалния подарък за специалния човек.
-        </p>
+<p>
+Намери специалния подарък за специалния човек.
+</p>
 
-    </div>
+</div>
 
-    <div class="everyone-grid">
 
-        <a href="#products" class="everyone-card">
+<div class="everyone-grid">
 
-            <img src="https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=800&q=80">
 
-            <div class="everyone-overlay">
-                <h3>🎁 За него</h3>
-            </div>
+<a href="#products" class="everyone-card">
 
-        </a>
+<img src="https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=800&q=80">
 
-        <a href="#products" class="everyone-card">
+<div class="everyone-overlay">
+<h3>🎁 За него</h3>
+</div>
 
-            <img src="https://images.unsplash.com/photo-1545608444-f045a3e9b6c5?auto=format&fit=crop&w=800&q=80">
+</a>
 
-            <div class="everyone-overlay">
-                <h3>💕 За нея</h3>
-            </div>
 
-        </a>
+<a href="#products" class="everyone-card">
 
-        <a href="#products" class="everyone-card">
+<img src="https://images.unsplash.com/photo-1545608444-f045a3e9b6c5?auto=format&fit=crop&w=800&q=80">
 
-            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80">
+<div class="everyone-overlay">
+<h3>💕 За нея</h3>
+</div>
 
-            <div class="everyone-overlay">
-                <h3>❤️ За двойки</h3>
-            </div>
+</a>
 
-        </a>
 
-        <a href="#products" class="everyone-card">
+<a href="#products" class="everyone-card">
 
-            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80">
 
-            <div class="everyone-overlay">
-                <h3>✨ За всеки повод</h3>
-            </div>
+<div class="everyone-overlay">
+<h3>❤️ За двойки</h3>
+</div>
 
-        </a>
+</a>
 
-    </div>
 
-</section>
-<section class="section">
+<a href="#products" class="everyone-card">
 
-    <div class="section-title">
+<img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80">
 
-        <h2>Най-популярни продукти</h2>
+<div class="everyone-overlay">
+<h3>✨ За всеки повод</h3>
+</div>
 
-        <p>
-            Любими подаръци от GrowGift
-        </p>
+</a>
 
-    </div>
 
-
-    <div class="products">
-
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <img src="https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=700&q=80">
-
-            </div>
-
-            <div class="product-info">
-
-                <h3>
-                    Персонализирана картичка
-                </h3>
-
-                <div class="price">
-                    4.99 €
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=700&q=80">
-
-            </div>
-
-            <div class="product-info">
-
-                <h3>
-                    Персонализиран подарък
-                </h3>
-
-                <div class="price">
-                    9.99 €
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80">
-
-            </div>
-
-            <div class="product-info">
-
-                <h3>
-                    Подаръчна кутия
-                </h3>
-
-                <div class="price">
-                    14.99 €
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=700&q=80">
-
-            </div>
-
-            <div class="product-info">
-
-                <h3>
-                    шоко Картичка
-                </h3>
-
-                <div class="price">
-                    6.99 €
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
+</div>
 
 </section>
 
 
-<section class="section about">
+<!-- PRODUCTS -->
 
-    <div class="about-content">
+<section class="section" id="products">
 
-        <h2>Създадено специално за теб</h2>
+<div class="section-title">
 
-        <p>
-            В GrowGift създаваме персонализирани подаръци,
-            картички и красиви изненади за специалните моменти.
-            Всеки продукт може да бъде направен по твоя идея.
-        </p>
+<h2>
+Най-популярни продукти
+</h2>
 
-    </div>
+<p>
+Любими подаръци от GrowGift
+</p>
+
+</div>
+
+
+<div class="products" id="productList">
+</div>
 
 </section>
+
+
+<!-- ABOUT -->
+
+<section class="section about" id="about">
+
+<div class="about-content">
+
+<h2>
+Създадено специално за теб
+</h2>
+
+<p>
+В GrowGift създаваме персонализирани подаръци,
+картички и красиви изненади за специалните моменти.
+Всеки продукт може да бъде направен по твоя идея.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- WHY -->
 
 <section class="section why">
 
 <div class="section-title">
 
-<h2>Защо GrowGift?</h2>
+<h2>
+Защо GrowGift?
+</h2>
 
-<p>Всичко, което е нужно за един специален подарък.</p>
+<p>
+Всичко, което е нужно за един специален подарък.
+</p>
 
 </div>
+
 
 <div class="why-grid">
 
-<div class="why-item">
-<div class="why-icon">🎁</div>
-<h3>Персонализация</h3>
-<p>Всеки подарък може да бъде създаден специално за теб.</p>
-</div>
 
 <div class="why-item">
-<div class="why-icon">🚚</div>
-<h3>Бърза доставка</h3>
-<p>Подготвяме и изпращаме твоите подаръци възможно най-бързо.</p>
+
+<div class="why-icon">
+🎁
 </div>
 
-<div class="why-item">
-<div class="why-icon">💎</div>
-<h3>Качествени материали</h3>
-<p>Работим с внимание към всеки детайл.</p>
+<h3>
+Персонализация
+</h3>
+
+<p>
+Всеки подарък може да бъде създаден специално за теб.
+</p>
+
 </div>
 
+
 <div class="why-item">
-<div class="why-icon">❤️</div>
-<h3>Направено с любов</h3>
-<p>Всеки продукт е създаден с лично отношение.</p>
+
+<div class="why-icon">
+🚚
 </div>
+
+<h3>
+Бърза доставка
+</h3>
+
+<p>
+Подготвяме и изпращаме твоите подаръци възможно най-бързо.
+</p>
+
+</div>
+
+
+<div class="why-item">
+
+<div class="why-icon">
+💎
+</div>
+
+<h3>
+Качествени материали
+</h3>
+
+<p>
+Работим с внимание към всеки детайл.
+</p>
+
+</div>
+
+
+<div class="why-item">
+
+<div class="why-icon">
+❤️
+</div>
+
+<h3>
+Направено с любов
+</h3>
+
+<p>
+Всеки продукт е създаден с лично отношение.
+</p>
+
+</div>
+
 
 </div>
 
 </section>
-    
+
+
+<!-- CONTACT -->
+
+<section class="section contact" id="contact">
+
+<div class="contact-box">
+
+<div class="section-title">
+
+<h2>
+Свържи се с нас
+</h2>
+
+<p>
+Имаш идея за подарък? Пиши ни и ще я превърнем в реалност.
+</p>
+
+</div>
+
+<a class="contact-button" href="mailto:info@growgift.bg">
+✉️ Пиши ни
+</a>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
 <footer>
 
-    <div class="footer-grid">
-
-        <div>
-
-            <h3>GrowGift</h3>
-
-            <p>
-                Персонализирани подаръци с лично послание.
-            </p>
-
-        </div>
+<div class="footer-grid">
 
 
-        <div>
+<div>
 
-            <h3>Информация</h3>
+<h3>
+GrowGift
+</h3>
 
-            <p>
-                За нас<br>
-                Доставка<br>
-                Плащане<br>
-                Общи условия
-            </p>
+<p>
+Персонализирани подаръци с лично послание.
+</p>
 
-        </div>
-
-
-        <div>
-
-            <h3>Контакти</h3>
-
-            <p>
-                📞 08XXXXXXXX<br>
-                ✉️ info@growgift.bg<br>
-                📍 България
-            </p>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <div class="copyright">
-        © 2026 GrowGift. Всички права запазени.
-    </div>
+<div>
+
+<h3>
+Информация
+</h3>
+
+<p>
+
+<a href="#about">За нас</a><br>
+
+<a href="#products">Продукти</a><br>
+
+<a href="#contact">Контакти</a><br>
+
+Доставка<br>
+
+Общи условия
+
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Контакти
+</h3>
+
+<p>
+
+📞 08XXXXXXXX<br>
+
+✉️ info@growgift.bg<br>
+
+📍 България
+
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 GrowGift. Всички права запазени.
+
+</div>
 
 </footer>
+
+
+<!-- CART -->
+
+<div class="cart-panel" id="cartPanel">
+
+<div class="cart-header">
+
+<h2>
+🛒 Количка
+</h2>
+
+<button class="close-cart" onclick="closeCart()">
+×
+</button>
+
+</div>
+
+
+<div id="cartItems">
+</div>
+
+
+<div class="cart-total">
+
+Общо:
+<span id="cartTotal">
+0.00 €
+</span>
+
+</div>
+
+
+<button class="checkout-button" onclick="checkout()">
+ПОРЪЧАЙ
+</button>
+
+
+</div>
+
+
+<script>
+
+/* =====================================
+   ПРОДУКТИ
+   ТУК ЩЕ ДОБАВЯМЕ НОВИТЕ ПРОДУКТИ
+===================================== */
+
+const productsData = [
+
+{
+    id: 1,
+    name: "Персонализирана картичка",
+    price: 4.99,
+    image: "https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+    id: 2,
+    name: "Персонализиран подарък",
+    price: 9.99,
+    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+    id: 3,
+    name: "Подаръчна кутия",
+    price: 14.99,
+    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80"
+},
+
+{
+    id: 4,
+    name: "Шоко картичка",
+    price: 6.99,
+    image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=700&q=80"
+}
+
+];
+
+
+/* =====================================
+   ПОКАЗВАНЕ НА ПРОДУКТИТЕ
+===================================== */
+
+let cart = [];
+
+function renderProducts() {
+
+    const productList =
+        document.getElementById("productList");
+
+    productList.innerHTML = "";
+
+    productsData.forEach(product => {
+
+        productList.innerHTML += `
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img src="${product.image}"
+                alt="${product.name}">
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <div class="price">
+                    ${product.price.toFixed(2)} €
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="addToCart(${product.id})">
+
+                    ДОБАВИ В КОЛИЧКАТА
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =====================================
+   ДОБАВЯНЕ В КОЛИЧКАТА
+===================================== */
+
+function addToCart(id) {
+
+    const product =
+        productsData.find(p => p.id === id);
+
+    cart.push(product);
+
+    updateCart();
+
+    openCart();
+
+}
+
+
+/* =====================================
+   ПОКАЗВАНЕ НА КОЛИЧКАТА
+===================================== */
+
+function updateCart() {
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    const cartCount =
+        document.getElementById("cartCount");
+
+    const cartTotal =
+        document.getElementById("cartTotal");
+
+
+    cartCount.innerText = cart.length;
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML =
+        `<div class="empty-cart">
+            Количката е празна.
+        </div>`;
+
+        cartTotal.innerText = "0.00 €";
+
+        return;
+    }
+
+
+    cartItems.innerHTML = "";
+
+
+    let total = 0;
+
+
+    cart.forEach((product, index) => {
+
+        total += product.price;
+
+
+        cartItems.innerHTML += `
+
+        <div class="cart-item">
+
+            <img src="${product.image}">
+
+            <div class="cart-item-info">
+
+                <h4>
+                    ${product.name}
+                </h4>
+
+                <strong>
+                    ${product.price.toFixed(2)} €
+                </strong>
+
+                <br>
+
+                <button
+                    class="remove-button"
+                    onclick="removeFromCart(${index})">
+
+                    Премахни
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+
+    cartTotal.innerText =
+        total.toFixed(2) + " €";
+
+}
+
+
+/* =====================================
+   ПРЕМАХВАНЕ
+===================================== */
+
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+}
+
+
+/* =====================================
+   ОТВАРЯНЕ НА КОЛИЧКАТА
+===================================== */
+
+function openCart() {
+
+    document
+    .getElementById("cartPanel")
+    .classList.add("open");
+
+}
+
+
+/* =====================================
+   ЗАТВАРЯНЕ
+===================================== */
+
+function closeCart() {
+
+    document
+    .getElementById("cartPanel")
+    .classList.remove("open");
+
+}
+
+
+/* =====================================
+   ПОРЪЧКА
+===================================== */
+
+function checkout() {
+
+    if (cart.length === 0) {
+
+        alert("Количката е празна.");
+
+        return;
+    }
+
+
+    alert(
+        "Благодарим за поръчката! ❤️\n\n" +
+        "Следващата стъпка ще бъде да добавим форма за име, телефон, адрес и начин на доставка."
+    );
+
+}
+
+
+/* =====================================
+   СТАРТИРАНЕ
+===================================== */
+
+renderProducts();
+
+updateCart();
+
+</script>
 
 </body>
 </html>
