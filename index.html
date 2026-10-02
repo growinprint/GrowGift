@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GrowGift – Персонализирани подаръци</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #222;
+}
+
+/* TOP BAR */
+
+.topbar {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 9px;
+    font-size: 13px;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6%;
+    border-bottom: 1px solid #eee;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #c49a6c;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-size: 15px;
+}
+
+.icons {
+    display: flex;
+    gap: 18px;
+    font-size: 21px;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 500px;
+    background: linear-gradient(
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.25)
+    ),
+    url("https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=1800&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 700px;
+    padding: 30px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.button {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #c49a6c;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* CATEGORIES */
+
+.section {
+    padding: 65px 6%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #777;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.category {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.category:hover img {
+    transform: scale(1.06);
+}
+
+.category-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 18px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(transparent, rgba(0,0,0,.7));
+}
+
+/* PRODUCTS */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.product {
+    position: relative;
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.product:hover img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding-top: 14px;
+}
+
+.product-info h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-weight: bold;
+    color: #c49a6c;
+    font-size: 18px;
+}
+
+.old-price {
+    color: #999;
+    text-decoration: line-through;
+    margin-right: 8px;
+    font-weight: normal;
+}
+
+/* ABOUT */
+
+.about {
+    background: #f7f5f2;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 750px;
+    margin: auto;
+}
+
+.about h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    line-height: 1.8;
+    color: #666;
+}
+
+/* FOOTER */
+
+footer {
+    background: #222;
+    color: white;
+    padding: 50px 6%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+footer h3 {
+    margin-bottom: 15px;
+}
+
+footer p {
+    color: #bbb;
+    line-height: 1.7;
+}
+
+.copyright {
+    border-top: 1px solid #444;
+    margin-top: 35px;
+    padding-top: 20px;
+    color: #999;
+    text-align: center;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 430px;
+    }
+
+    .hero h1 {
+        font-size: 37px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .section {
+        padding: 45px 20px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    🚚 Безплатна доставка при поръчки над 50 €.
+</div>
+
+<header>
+
+    <div class="logo">
+        Grow<span>Gift</span>
+    </div>
+
+    <nav>
+        <a href="#">Начало</a>
+        <a href="#">Категории</a>
+        <a href="#">Подаръци</a>
+        <a href="#">За нас</a>
+        <a href="#">Контакти</a>
+    </nav>
+
+    <div class="icons">
+        🔍
+        🛒
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Подаръци с лично послание</h1>
+
+        <p>
+            Персонализирани подаръци, създадени специално за теб.
+        </p>
+
+        <a href="#" class="button">
+            РАЗГЛЕДАЙ ПРОДУКТИТЕ
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>Пазарувай по повод</h2>
+
+        <p>
+            Избери подарък за всеки специален момент
+        </p>
+
+    </div>
+
+
+    <div class="categories">
+
+        <div class="category">
+
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=700&q=80">
+
+            <div class="category-name">
+                коледа
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=700&q=80">
+
+            <div class="category-name">
+                Подаръци
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=700&q=80">
+
+            <div class="category-name">
+                за рожден ден
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <img src="https://images.unsplash.com/photo-1545608444-f045a3e9b6c5?auto=format&fit=crop&w=700&q=80">
+
+            <div class="category-name">
+                сватба
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>Най-популярни продукти</h2>
+
+        <p>
+            Любими подаръци от GrowGift
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img src="https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=700&q=80">
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Персонализирана картичка
+                </h3>
+
+                <div class="price">
+                    4.99 €
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=700&q=80">
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Персонализиран подарък
+                </h3>
+
+                <div class="price">
+                    9.99 €
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80">
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Подаръчна кутия
+                </h3>
+
+                <div class="price">
+                    14.99 €
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=700&q=80">
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    шоко Картичка
+                </h3>
+
+                <div class="price">
+                    6.99 €
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<section class="section about">
+
+    <div class="about-content">
+
+        <h2>Създадено специално за теб</h2>
+
+        <p>
+            В GrowGift създаваме персонализирани подаръци,
+            картички и красиви изненади за специалните моменти.
+            Всеки продукт може да бъде направен по твоя идея.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>GrowGift</h3>
+
+            <p>
+                Персонализирани подаръци с лично послание.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Информация</h3>
+
+            <p>
+                За нас<br>
+                Доставка<br>
+                Плащане<br>
+                Общи условия
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Контакти</h3>
+
+            <p>
+                📞 08XXXXXXXX<br>
+                ✉️ info@growgift.bg<br>
+                📍 България
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 GrowGift. Всички права запазени.
+    </div>
+
+</footer>
+
+</body>
+</html>
