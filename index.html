@@ -318,6 +318,93 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+    /* WHY GROWGIFT */
+.section.why {
+    padding: 60px 6%;
+    background: #faf7f3;
+    text-align: center;
+}
+
+.section.why .section-title h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.section.why .section-title p {
+    color: #777;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.why-item {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease;
+}
+
+.why-item:hover {
+    transform: translateY(-5px);
+}
+
+.why-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.why-item h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.why-item p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #777;
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .section.why {
+        padding: 45px 20px;
+    }
+
+    .section.why .section-title h2 {
+        font-size: 28px;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+
+    .why-item {
+        padding: 22px 12px;
+    }
+
+    .why-icon {
+        font-size: 32px;
+    }
+
+    .why-item h3 {
+        font-size: 16px;
+    }
+
+    .why-item p {
+        font-size: 13px;
+    }
+}
 
 </style>
 </head>
