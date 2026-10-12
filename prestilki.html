@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Престилки по индивидуален дизайн | GrowGift</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#c49a6c;--ink:#222;--muted:#777;--cream:#faf7f3}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;color:var(--ink);background:#fff}
+.topbar{background:#222;color:#fff;text-align:center;padding:9px 12px;font-size:13px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 6%;border-bottom:1px solid #eee;background:#fff;position:sticky;top:0;z-index:10}
+.logo{font-size:27px;font-weight:bold;letter-spacing:1px;text-decoration:none;color:var(--ink);white-space:nowrap}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:22px;align-items:center}
+nav a,.back-link{color:var(--ink);text-decoration:none;font-size:14px}
+nav a:hover,.back-link:hover{color:var(--gold)}
+.icons{display:flex;align-items:center;gap:12px}
+.icon-button{border:0;background:none;font-size:20px;cursor:pointer}
+.hero{padding:62px 6%;text-align:center;background:linear-gradient(135deg,#f8f4ef,#fff)}
+.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:12px;color:#98724e;font-weight:bold;margin-bottom:13px}
+.hero h1{font-size:clamp(32px,5vw,48px);margin-bottom:15px}
+.hero p{max-width:650px;margin:0 auto;color:#666;line-height:1.7;font-size:17px}
+main{padding:44px 6% 70px;max-width:1400px;margin:auto}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:25px}
+.toolbar h2{font-size:25px}
+.toolbar p{color:var(--muted);font-size:14px;margin-top:6px}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.product{border:1px solid #eee;border-radius:12px;overflow:hidden;background:#fff;transition:transform .2s,box-shadow .2s}
+.product:hover{transform:translateY(-4px);box-shadow:0 10px 28px #0000000d}
+.product-image{aspect-ratio:4/4.2;background:#f5f3f0;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:cover;display:block}
+.product-info{padding:18px}
+.product-info h3{font-size:18px;margin-bottom:8px}
+.description{font-size:14px;line-height:1.5;color:#777;min-height:42px;margin-bottom:12px}
+.price{font-size:20px;font-weight:bold;color:#b88b5d;margin-bottom:15px}
+.add-button{width:100%;padding:13px;border:0;border-radius:6px;background:#222;color:white;font-weight:bold;cursor:pointer}
+.add-button:hover{background:var(--gold)}
+.note{margin-top:30px;padding:18px 20px;border-radius:10px;background:var(--cream);color:#665b50;line-height:1.6;font-size:14px}
+footer{background:#222;color:#fff;padding:35px 6%;text-align:center}
+footer p{color:#bbb;line-height:1.7;font-size:14px}
+footer a{color:#fff;text-decoration:none}
+.cart-panel{position:fixed;right:-420px;top:0;width:380px;max-width:92%;height:100%;background:white;z-index:30;box-shadow:-5px 0 25px #0002;padding:23px;transition:right .3s;overflow-y:auto}
+.cart-panel.open{right:0}
+.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.close-cart{border:0;background:none;font-size:28px;cursor:pointer}
+.cart-item{display:flex;gap:12px;border-bottom:1px solid #eee;padding:13px 0}
+.cart-item img{width:66px;height:66px;object-fit:cover;border-radius:6px}
+.cart-item-info{flex:1;font-size:14px}
+.cart-item-info h4{margin-bottom:7px}
+.remove-button{border:0;background:none;color:#b22;cursor:pointer;margin-top:7px}
+.cart-total{font-size:20px;font-weight:bold;margin-top:22px}
+.checkout-button{width:100%;padding:14px;margin-top:14px;border:0;border-radius:6px;background:var(--gold);color:white;font-weight:bold;cursor:pointer}
+.empty-cart{text-align:center;color:#777;padding:28px 0}
+@media(max-width:800px){header{padding:14px 20px}nav{display:none}.hero{padding:48px 20px}main{padding:32px 20px 50px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.product-info{padding:13px}.product-info h3{font-size:16px}.description{font-size:13px}.toolbar{align-items:flex-start;flex-direction:column}}
+@media(max-width:420px){.products{grid-template-columns:1fr 1fr}.product-image{aspect-ratio:1/1}.product-info h3{font-size:15px}.price{font-size:18px}.add-button{font-size:12px;padding:11px}}
+</style>
+</head>
+<body>
+<div class="topbar">🚚 Безплатна доставка при поръчки над 50 €.</div>
+<header>
+  <a class="logo" href="index.html">Grow<span>Gift</span></a>
+  <nav>
+    <a href="index.html">Начало</a>
+    <a href="index.html#categories">Категории</a>
+    <a href="index.html#contact">Контакти</a>
+  </nav>
+  <div class="icons">
+    <button class="icon-button" aria-label="Отвори количката" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">GrowGift · Персонализирани подаръци</div>
+  <h1>Престилки по индивидуален дизайн</h1>
+  <p>Избери престилка и я превърни в личен подарък с надпис или идея по твой избор. За хората, които приемат кухнята сериозно… или поне престилката си.</p>
+</section>
+
+<main>
+  <a class="back-link" href="index.html">← Обратно към началната страница</a>
+  <div class="toolbar" style="margin-top:28px">
+    <div>
+      <h2>Нашите престилки</h2>
+      <p>Избери модел, който подхожда на твоя човек.</p>
+    </div>
+  </div>
+
+  <div class="products">
+    <article class="product">
+      <div class="product-image">
+        <img src="https://raw.githubusercontent.com/growinprint/GrowGift/main/727AD5C5-258A-4ECC-854E-1B810C35DE25.png" alt="Черна престилка за господина" loading="lazy">
+      </div>
+      <div class="product-info">
+        <h3>Черна престилка за него</h3>
+        <p class="description">Персонализирана престилка с надпис по избор.</p>
+        <div class="price">19,99 €</div>
+        <button class="add-button" onclick="addToCart(101)">ДОБАВИ В КОЛИЧКАТА</button>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-image">
+        <img src="https://raw.githubusercontent.com/growinprint/GrowGift/main/6FB1A03A-06E7-4761-A800-2EC20609D767.jpeg" alt="Бяла престилка за дамата" loading="lazy">
+      </div>
+      <div class="product-info">
+        <h3>Бяла престилка за нея</h3>
+        <p class="description">Изчистен модел с възможност за забавен или личен текст.</p>
+        <div class="price">19,99 €</div>
+        <button class="add-button" onclick="addToCart(102)">ДОБАВИ В КОЛИЧКАТА</button>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-image">
+        <img src="https://raw.githubusercontent.com/growinprint/GrowGift/main/727AD5C5-258A-4ECC-854E-1B810C35DE25.png" alt="Персонализирана престилка по идея на клиента" loading="lazy">
+      </div>
+      <div class="product-info">
+        <h3>Престилка с твой текст</h3>
+        <p class="description">Избери надпис за рожден ден, годишнина или подарък без повод.</p>
+        <div class="price">19,99 €</div>
+        <button class="add-button" onclick="addToCart(103)">ДОБАВИ В КОЛИЧКАТА</button>
+      </div>
+    </article>
+  </div>
+
+  <div class="note">ℹ️ Цените в тази страница са примерни и могат да бъдат сменени. Преди публикуване провери дали снимките се зареждат и замени примерните цени с твоите реални цени.</div>
+</main>
+
+<footer>
+  <p><strong>GrowGift</strong><br>Персонализирани подаръци с лично послание.<br><a href="mailto:info@growgift.bg">info@growgift.bg</a></p>
+  <p style="margin-top:18px">© 2026 GrowGift. Всички права запазени.</p>
+</footer>
+
+<div class="cart-panel" id="cartPanel" aria-label="Количка">
+  <div class="cart-header"><h2>🛒 Количка</h2><button class="close-cart" onclick="closeCart()" aria-label="Затвори">×</button></div>
+  <div id="cartItems"></div>
+  <div class="cart-total">Общо: <span id="cartTotal">0,00 €</span></div>
+  <button class="checkout-button" onclick="checkout()">ПОРЪЧАЙ</button>
+</div>
+
+<script>
+const apronProducts = [
+  {id:101,name:"Черна престилка за него",price:19.99,image:"https://raw.githubusercontent.com/growinprint/GrowGift/main/727AD5C5-258A-4ECC-854E-1B810C35DE25.png"},
+  {id:102,name:"Бяла престилка за нея",price:19.99,image:"https://raw.githubusercontent.com/growinprint/GrowGift/main/6FB1A03A-06E7-4761-A800-2EC20609D767.jpeg"},
+  {id:103,name:"Престилка с твой текст",price:19.99,image:"https://raw.githubusercontent.com/growinprint/GrowGift/main/727AD5C5-258A-4ECC-854E-1B810C35DE25.png"}
+];
+const CART_KEY = "growgift_cart";
+let cart = loadCart();
+
+function loadCart(){
+  try { return JSON.parse(localStorage.getItem(CART_KEY) || "[]"); }
+  catch(e) { return []; }
+}
+function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+function addToCart(id){
+  const product = apronProducts.find(p => p.id === id);
+  if(!product) return;
+  cart.push(product);
+  saveCart();
+  updateCart();
+  openCart();
+}
+function updateCart(){
+  document.getElementById("cartCount").textContent = cart.length;
+  const list = document.getElementById("cartItems");
+  const totalEl = document.getElementById("cartTotal");
+  if(!cart.length){
+    list.innerHTML = '<div class="empty-cart">Количката е празна.</div>';
+    totalEl.textContent = "0,00 €";
+    return;
+  }
+  let total = 0;
+  list.innerHTML = cart.map((p,i)=>{
+    total += Number(p.price)||0;
+    return `<div class="cart-item"><img src="${p.image}" alt=""><div class="cart-item-info"><h4>${p.name}</h4><strong>${Number(p.price).toFixed(2).replace(".",",")} €</strong><br><button class="remove-button" onclick="removeFromCart(${i})">Премахни</button></div></div>`;
+  }).join("");
+  totalEl.textContent = total.toFixed(2).replace(".",",") + " €";
+}
+function removeFromCart(index){cart.splice(index,1);saveCart();updateCart();}
+function openCart(){document.getElementById("cartPanel").classList.add("open");}
+function closeCart(){document.getElementById("cartPanel").classList.remove("open");}
+function checkout(){
+  if(!cart.length){alert("Количката е празна.");return;}
+  alert("Благодарим за интереса! Формата за завършване на поръчка ще бъде добавена отделно.");
+}
+updateCart();
+</script>
+</body>
+</html>
